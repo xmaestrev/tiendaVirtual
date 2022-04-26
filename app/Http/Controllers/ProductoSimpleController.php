@@ -13,8 +13,11 @@ class ProductoSimpleController extends Controller
 {
     function index(Request $request){
 
-        $sql = 'SELECT * FROM productos WHERE id = '.$request->input("id_producto").'';
-        $producto = DB::select($sql);
+
+
+        $producto = DB::table('productos')
+                ->where('id',  $request->input("id_producto"))
+                ->get();
         
         return view("producto-simple", ["producto" => $producto[0]]);
     }

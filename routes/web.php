@@ -6,7 +6,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\ProductoSimpleController;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\ComprarController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CarritoController;
 
 require __DIR__.'/auth.php';
@@ -64,22 +64,21 @@ Route::get("/catalogo", [CatalogoController::class, "index"])->name("catalogo");
 
 Route::post("/catalogo/{idProducto}", [ProductoSimpleController::class, "index"]);
 
-
+Route::get("/catalogo/categoria/{idCategoria}", [CatalogoController::class, "catalogoCategoria"]);
 
 
 // CLIENTE
 
 Route::post("/catalogo/anadirCesta/wtf", [ProductoSimpleController::class, "anadirCesta"])->name("anadir-cesta");
+
+
 Route::post("/cesta/eliminar", [CarritoController::class, "eliminarCesta"])->name("eliminar-cesta");
 
 
-Route::post("/comprar/", [ProductoSimpleController::class, "conmprarAhora"]);
+Route::post("/comprar/", [ProductoSimpleController::class, "comprarAhora"])->name("comprar-ahora");
 
-
-
-
-
-
-Route::get("/catalogo/categoria/{idCategoria}", [CatalogoController::class, "catalogoCategoria"]);
 
 Route::get("/cesta", [CarritoController::class, "index"])->name("cesta");
+
+
+Route::post("/pagar", [ClienteController::class, "pagarCompra"])->name("pagar-compra");

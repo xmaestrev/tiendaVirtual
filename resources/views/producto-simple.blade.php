@@ -51,7 +51,7 @@
                     </form>
 
 
-                    <form method="POST" class="form-comprar-ahora" action="{{route("anadir-cesta")}}">
+                    <form method="POST" class="form-comprar-ahora" action="{{route("comprar-ahora")}}">
                         @csrf
                         <input type="hidden" name="id_producto" value="{{$producto->id}}">
                         <button type="submit" class="boton-comprar">Comprar ahora</button>

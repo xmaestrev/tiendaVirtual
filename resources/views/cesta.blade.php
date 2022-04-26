@@ -45,7 +45,8 @@
 
         <div class="comprar-todo">
 
-            <form method="POST" class="form-pagar-carrito" action="">
+            <form method="POST" class="form-pagar-carrito" action="{{route("pagar-compra")}}">
+                @csrf
                 <label for="">Titular de la tarjeta: </label>
                 <input type="text">
                 
@@ -63,6 +64,14 @@
                     
                     ?>
                 </div>
+
+                <?php
+                    $value = "";
+                ?>
+
+                @foreach ($productos as $item)
+                    <input type="hidden" value="{{$value.=$item[0]->id}}" name="id_producto">
+                @endforeach
 
                 <div class="boton-compra-cesta">
                     <button type="submit" class="boton-comprar-carrito"> COMPRAR</button>

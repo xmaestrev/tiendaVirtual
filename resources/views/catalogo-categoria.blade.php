@@ -8,20 +8,27 @@
     @foreach ($productos as $item)
 
     @if ($item->publicado == 1)
-           <div class="producto-catalogo-admin" style="background-image: url({{asset("storage/$item->foto")}});">
 
-                <a class="producto-catalogo" href="/catalogo/{{$item->id}}">
-                    <div class="info-producto-catalogo">
-                        <div class="titulo-producto">
-                            {{$item->titulo}}
-                        </div>
-                        <div class="precio-producto">
-                            {{$item->precio}}€
-                        </div>
+    <form method="POST" action="/catalogo/{{$item->id}}">
+        @csrf
+        <input type="hidden" name="id_producto" value="{{$item->id}}">
+
+        <div class="producto-catalogo-admin" style="background-image: url({{asset("storage/$item->foto")}});">
+
+                <div class="info-producto-catalogo">
+                    <div class="titulo-producto">
+                        {{$item->titulo}}
                     </div>
-                </a>   
+                    <div class="precio-producto">
+                        {{$item->precio}}€
+                    </div>
+                </div>
 
-            </div> 
+        <button type="submit" style="color: white; background-color: #ed1d49; padding:10px;">Ver mas</button>
+    </form>
+            
+
+        </div>
     @endif
         
 

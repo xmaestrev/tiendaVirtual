@@ -19,7 +19,6 @@ return new class extends Migration
             $table->longText('descripcion');
             $table->string("foto");
             $table->integer("precio");
-            $table->integer("valoracion")->nullable();
             $table->integer("stock");
             $table->boolean("publicado");
             $table->foreignId("id_categoria");
